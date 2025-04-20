@@ -5,11 +5,12 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
+    scaffoldBackgroundColor: Color(0XFF212832),
 
     // colors
     colorScheme: const ColorScheme.light(
       primary: primaryColor,
-      secondary: Color(0XFF8E8E93),
+      secondary: Color(0XFF8CAAB9),
       surface: Colors.white,
 
       // adding complementary colors that work well with #acdde0
@@ -24,54 +25,52 @@ class AppTheme {
         color: primaryColor,
         fontSize: 18,
         fontWeight: FontWeight.w600,
-        fontFamily: 'regular',
       ),
       iconTheme: IconThemeData(color: Colors.black),
     ),
+    iconTheme: IconThemeData(color: Colors.white),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: primaryColor.withValues(alpha: .1),
+      fillColor: Color(0XFF455a64),
       contentPadding: EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 8,
       ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide.none,
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide.none,
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: primaryColor),
       ),
       hintStyle: TextStyle(
-        color: Colors.grey.shade600,
+        color: Colors.white,
       ),
     ),
     textTheme: TextTheme(
       titleLarge: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
-        color: Colors.black,
-        fontFamily: 'regular',
+        color: Colors.white,
       ),
       bodyLarge: TextStyle(
         fontSize: 16,
-        color: Colors.black87,
-        fontFamily: 'bold',
+        color: Colors.white,
       ),
       bodyMedium: TextStyle(
         fontSize: 14,
-        color: Colors.black87,
-        fontFamily: 'regular',
+        color: Colors.white,
       ),
       labelMedium: TextStyle(
         fontSize: 12,
-        color: Colors.grey,
-        fontFamily: 'regular',
+        color: Colors.white,
+      ),
+      labelLarge: TextStyle(
+        fontSize: 18,
+        color: Color(0XFF8CAAB9),
+        fontWeight: FontWeight.normal,
       ),
     ),
 
@@ -91,9 +90,7 @@ class AppTheme {
         foregroundColor: Colors.black87,
         elevation: 0,
         padding: const EdgeInsets.symmetric(vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(),
         textStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
