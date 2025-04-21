@@ -31,4 +31,5 @@ Future<void> setupServiceLocator() async {
       supabaseService: SupabaseService(),
     ),
   );
+  getIt.registerLazySingleton<SupabaseService>(() => SupabaseService());
 }

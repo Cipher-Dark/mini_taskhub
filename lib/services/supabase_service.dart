@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:mini_taskhub/presentation/dashboard/task_model.dart';
 import 'package:mini_taskhub/services/base_services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -51,6 +54,62 @@ class SupabaseService extends BaseService {
       } else {
         throw "Can't signUp try again";
       }
+    }
+  }
+
+  Future<void> addTask({
+    required String title,
+    required String data,
+    required String userId,
+  }) async {
+    try {
+      await supabase.from('tasks').insert({
+        'user_id': userId,
+        'title': title,
+        'data': data,
+      });
+    } catch (e) {
+      throw "Can't add task";
+    }
+  }
+
+  Stream<List<TaskModel>> getTasks(String userId) {
+    return supabase
+        .from('tasks')
+        .stream(primaryKey: [
+          'id'
+        ])
+        .eq('user_id', userId)
+        .map((maps) => maps.map((map) => TaskModel.fromJson(map)).toList());
+  }
+
+  Future<void> updateTask(String taskId, String title, String data) async {
+    try {
+      await database.update({
+        'title': title,
+        'data': data,
+      }).eq('id', taskId);
+    } catch (e) {
+      throw "Can't update task";
+    }
+  }
+
+  Future<void> deleteTask(int taskId) async {
+    log(taskId.toString());
+    try {
+      await database.delete().eq('id', taskId);
+    } catch (e) {
+      throw "Can't delete task";
+    }
+  }
+
+  Future<void> setComplete(int taskId) async {
+    try {
+      await database.update({
+        'is_completed': true,
+      }).eq('id', taskId);
+    } catch (e) {
+      throw "Can't set task as completed";
     }
   }
 }

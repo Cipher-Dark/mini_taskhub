@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static const primaryColor = Color(0XFFFED36A);
+  static const secondaryColor = Color(0XFF212832);
+
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    scaffoldBackgroundColor: Color(0XFF212832),
+    scaffoldBackgroundColor: secondaryColor,
 
     // colors
     colorScheme: const ColorScheme.light(
@@ -17,17 +19,30 @@ class AppTheme {
       tertiary: Color(0XFFacdde0),
       onPrimary: Colors.black87,
     ),
+    listTileTheme: const ListTileThemeData(
+      contentPadding: EdgeInsets.symmetric(horizontal: 16),
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      ),
+      subtitleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
 
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
+      backgroundColor: secondaryColor,
       elevation: 0,
       centerTitle: false,
       titleTextStyle: TextStyle(
-        color: primaryColor,
-        fontSize: 18,
+        color: Colors.white,
+        fontSize: 24,
         fontWeight: FontWeight.w600,
       ),
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.white),
     ),
     iconTheme: IconThemeData(color: Colors.white),
     inputDecorationTheme: InputDecorationTheme(
