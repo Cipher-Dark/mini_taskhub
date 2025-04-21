@@ -17,6 +17,7 @@ class AppTheme {
       tertiary: Color(0XFFacdde0),
       onPrimary: Colors.black87,
     ),
+
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
       elevation: 0,

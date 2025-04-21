@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mini_taskhub/key.dart';
+import 'package:mini_taskhub/logic/auth/auth_cubit.dart';
 import 'package:mini_taskhub/routes/app_routes.dart';
 import 'package:mini_taskhub/services/supabase_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -14,7 +16,19 @@ Future<void> setupServiceLocator() async {
     anonKey: supabaseKey,
   );
 
-  getIt.registerSingleton<SupabaseService>(SupabaseService());
+  // for transparent status bar
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // Optional: transparent status bar
+      statusBarIconBrightness: Brightness.light, // White icons for Android
+      statusBarBrightness: Brightness.dark, // White icons for iOS
+    ),
+  );
 
-  getIt.registerSingleton<AppRouter>(AppRouter());
+  getIt.registerLazySingleton<AppRouter>(() => AppRouter());
+  getIt.registerLazySingleton<AuthCubit>(
+    () => AuthCubit(
+      supabaseService: SupabaseService(),
+    ),
+  );
 }
