@@ -5,13 +5,14 @@ class AppTheme {
   static const primaryColor = Color(0xFFFED36A);
 
   // Light Theme Colors
-  static const secondaryColor = Color.fromARGB(255, 124, 159, 175);
+  static const secondaryColorlight = Color.fromARGB(255, 189, 221, 236);
   static const scaffoldColorLight = Colors.white;
 
   // Dark Theme Colors
   static const primaryColorDark = Color(0xFFFED36A);
   static const secondaryColorDark = Color(0xFF212832);
-  static const scaffoldColorDark = secondaryColorDark;
+  static const tertiaryColorDark = Color.fromARGB(255, 76, 78, 85);
+  static const scaffoldColorDark = Color(0xFF212832);
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -23,23 +24,6 @@ class AppTheme {
       surface: Color(0xFF2A2E3B),
       tertiary: Color(0xFFacdde0),
       onPrimary: Colors.black87,
-    ),
-    listTileTheme: ListTileThemeData(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      tileColor: secondaryColor,
-      titleTextStyle: const TextStyle(
-        color: Colors.white,
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
-      subtitleTextStyle: const TextStyle(
-        color: Colors.white70,
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-      ),
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: secondaryColorDark,
@@ -79,6 +63,9 @@ class AppTheme {
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     ),
+    cardTheme: CardTheme(
+      color: tertiaryColorDark,
+    ),
   );
 
   static ThemeData lightTheme = ThemeData(
@@ -91,23 +78,6 @@ class AppTheme {
       surface: Colors.white,
       tertiary: Color(0xFFacdde0),
       onPrimary: Colors.black87,
-    ),
-    listTileTheme: ListTileThemeData(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      tileColor: secondaryColor,
-      titleTextStyle: const TextStyle(
-        color: Colors.black87,
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-      ),
-      subtitleTextStyle: const TextStyle(
-        color: Colors.black54,
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-      ),
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
@@ -146,6 +116,9 @@ class AppTheme {
         shape: const RoundedRectangleBorder(),
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
+    ),
+    cardTheme: CardTheme(
+      color: secondaryColorlight,
     ),
   );
 }

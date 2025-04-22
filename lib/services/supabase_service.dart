@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:mini_taskhub/presentation/dashboard/task_model.dart';
 import 'package:mini_taskhub/services/base_services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -84,10 +82,6 @@ class SupabaseService extends BaseService {
   }
 
   Future<void> updateTask(TaskModel task) async {
-    log(task.id.toString());
-    log(task.title);
-    log(task.data);
-
     try {
       await database.update({
         'title': task.title,
@@ -99,7 +93,6 @@ class SupabaseService extends BaseService {
   }
 
   Future<void> deleteTask(int taskId) async {
-    log(taskId.toString());
     try {
       await database.delete().eq('id', taskId);
     } catch (e) {
@@ -107,10 +100,10 @@ class SupabaseService extends BaseService {
     }
   }
 
-  Future<void> setComplete(int taskId) async {
+  Future<void> setComplete(int taskId, bool isComplete) async {
     try {
       await database.update({
-        'is_completed': true,
+        'is_complete': isComplete,
       }).eq('id', taskId);
     } catch (e) {
       throw "Can't set task as completed";

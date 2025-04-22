@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_taskhub/logic/auth/auth_cubit.dart';
 import 'package:mini_taskhub/presentation/dashboard/task_model.dart';
+import 'package:mini_taskhub/presentation/dashboard/task_tile.dart';
 import 'package:mini_taskhub/provider/theme_provider.dart';
 import 'package:mini_taskhub/services/service_locator.dart';
 import 'package:mini_taskhub/services/supabase_service.dart';
@@ -166,9 +167,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
           CustomButton(
             onPressed: () async {
               if (formKey.currentState!.validate()) {
-                Navigator.pop(context);
                 task.title = _titleController.text;
                 task.data = _dataController.text;
+                _titleController.clear();
+                _dataController.clear();
+                Navigator.pop(context);
                 await getIt<SupabaseService>().updateTask(task);
               }
             },
@@ -260,7 +263,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Dismissible(
                   key: Key(task.id.toString()),
                   direction: DismissDirection.horizontal,
-                  // onDismissed: (direction) => showDeleteDialof(task.id),
                   confirmDismiss: (direction) async {
                     return await showDialog<bool>(
                       context: context,
@@ -285,7 +287,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       },
                     );
                   },
-
                   background: Container(
                     alignment: Alignment.centerRight,
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -295,14 +296,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     child: const Icon(Icons.delete, color: Colors.white),
                   ),
-                  child: ListTile(
-                    onLongPress: () => showEditTaskDialog(task),
-                    title: Text(task.title),
-                    subtitle: Text(task.data),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.edit_outlined),
-                    ),
+                  child: TaskTile(
+                    task: task,
+                    onEdit: () => showEditTaskDialog(task),
                   ),
                 ),
               );
