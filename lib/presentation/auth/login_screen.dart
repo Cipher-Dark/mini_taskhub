@@ -176,7 +176,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: size.height * 0.04),
                         CustomButton(
                           onPressed: handleLogin,
-                          text: 'Log In',
+                          child: state.status == AuthStatus.loading
+                              ? SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : const Text('Log In'),
                         ),
                         SizedBox(height: size.height * 0.04),
                         Row(

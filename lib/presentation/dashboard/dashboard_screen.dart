@@ -249,7 +249,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return Center(child: Text("Something went wrong"));
           }
           if (snapshot.data!.isEmpty) {
-            return Center(child: Text("No tasks found"));
+            return Center(child: Text("Add task to get started"));
           }
 
           final tasks = snapshot.data!;

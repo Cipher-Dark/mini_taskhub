@@ -233,7 +233,15 @@ class _SignupScreenState extends State<SignupScreen> {
                         SizedBox(height: size.height * 0.02),
                         CustomButton(
                           onPressed: _handleSignUp,
-                          text: 'Sign Up',
+                          child: state.status == AuthStatus.loading
+                              ? SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : const Text('Sign Up'),
                         ),
                         SizedBox(height: size.height * 0.02),
                         Row(
