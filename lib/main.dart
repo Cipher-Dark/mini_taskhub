@@ -5,12 +5,19 @@ import 'package:mini_taskhub/logic/auth/auth_cubit.dart';
 import 'package:mini_taskhub/logic/auth/auth_state_cubit.dart';
 import 'package:mini_taskhub/presentation/auth/login_screen.dart';
 import 'package:mini_taskhub/presentation/dashboard/dashboard_screen.dart';
+import 'package:mini_taskhub/provider/theme_provider.dart';
 import 'package:mini_taskhub/routes/app_routes.dart';
 import 'package:mini_taskhub/services/service_locator.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await setupServiceLocator();
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +30,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Mini TaskHub',
         debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
+        theme: Provider.of<ThemeProvider>(context).getTheme ? AppTheme.darkTheme : AppTheme.lightTheme,
         navigatorKey: getIt<AppRouter>().navigatorKey,
         home: BlocBuilder<AuthCubit, AuthStateCubit>(
           bloc: getIt<AuthCubit>(),

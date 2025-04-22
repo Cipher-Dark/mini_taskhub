@@ -83,12 +83,16 @@ class SupabaseService extends BaseService {
         .map((maps) => maps.map((map) => TaskModel.fromJson(map)).toList());
   }
 
-  Future<void> updateTask(String taskId, String title, String data) async {
+  Future<void> updateTask(TaskModel task) async {
+    log(task.id.toString());
+    log(task.title);
+    log(task.data);
+
     try {
       await database.update({
-        'title': title,
-        'data': data,
-      }).eq('id', taskId);
+        'title': task.title,
+        'data': task.data,
+      }).eq('id', task.id);
     } catch (e) {
       throw "Can't update task";
     }

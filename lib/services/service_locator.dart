@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mini_taskhub/key.dart';
 import 'package:mini_taskhub/logic/auth/auth_cubit.dart';
@@ -17,13 +16,13 @@ Future<void> setupServiceLocator() async {
   );
 
   // for transparent status bar
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, // Optional: transparent status bar
-      statusBarIconBrightness: Brightness.light, // White icons for Android
-      statusBarBrightness: Brightness.dark, // White icons for iOS
-    ),
-  );
+  // SystemChrome.setSystemUIOverlayStyle(
+  //   const SystemUiOverlayStyle(
+  //     statusBarColor: Colors.transparent, // Optional: transparent status bar
+  //     statusBarIconBrightness: Brightness.light, // White icons for Android
+  //     statusBarBrightness: Brightness.dark, // White icons for iOS
+  //   ),
+  // );
 
   getIt.registerLazySingleton<AppRouter>(() => AppRouter());
   getIt.registerLazySingleton<AuthCubit>(
