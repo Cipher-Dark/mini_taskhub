@@ -5,6 +5,7 @@ import 'package:mini_taskhub/presentation/dashboard/task_tile.dart';
 import 'package:mini_taskhub/provider/theme_provider.dart';
 import 'package:mini_taskhub/services/service_locator.dart';
 import 'package:mini_taskhub/services/supabase_service.dart';
+import 'package:mini_taskhub/utils/utils.dart';
 import 'package:mini_taskhub/widgets/custom_button.dart';
 import 'package:mini_taskhub/widgets/custom_text_filed.dart';
 import 'package:provider/provider.dart';
@@ -263,6 +264,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Dismissible(
                   key: Key(task.id.toString()),
                   direction: DismissDirection.horizontal,
+                  onDismissed: (direction) {
+                    tasks.removeAt(index);
+                    Utils.showSnackBar(context, 'Task deleted successfully');
+                  },
                   confirmDismiss: (direction) async {
                     return await showDialog<bool>(
                       context: context,
