@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Brand colors
   static const primaryColor = Color(0xFFFED36A);
+  // Brand colors
 
   // Light Theme Colors
   static const secondaryColorlight = Color.fromARGB(255, 189, 221, 236);

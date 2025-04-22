@@ -83,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: Color(0xFF212832),
           body: SingleChildScrollView(
             padding: const EdgeInsets.only(bottom: 10, right: 18, left: 18),
             child: SafeArea(
@@ -109,7 +110,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               TextSpan(text: 'Mini '),
                               TextSpan(
                                 text: 'TaskHub',
-                                style: TextStyle(color: Theme.of(context).primaryColor),
+                                style: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                               ),
                             ],
                           ),
@@ -236,7 +239,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   recognizer: TapGestureRecognizer()..onTap = () => getIt<AppRouter>().push(const SignupScreen()),
                                   text: 'Sign up',
                                   style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: Theme.of(context).colorScheme.primary,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
