@@ -71,7 +71,7 @@ class TaskTile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
-                          "Not Completed",
+                          "Pending",
                           style: const TextStyle(
                             color: Colors.white,
                           ),
