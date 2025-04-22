@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Image.asset(
                           'assets/logo.png',
-                          fit: BoxFit.contain,
+                          // fit: BoxFit.contain,
                         ),
                         RichText(
                           textAlign: TextAlign.center,

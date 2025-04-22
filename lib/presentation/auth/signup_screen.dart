@@ -212,7 +212,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           children: [
                             Checkbox(
                               value: isChecked,
-                              checkColor: Theme.of(context).primaryColor,
+                              checkColor: Theme.of(context).colorScheme.primary,
                               autofocus: true,
                               fillColor: WidgetStateProperty.all(Colors.transparent),
                               side: BorderSide(
